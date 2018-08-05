@@ -14,45 +14,46 @@ int buttonIsPressed(int button) {
 	return controllerState_buttons & (1<<button);
 }
 void printState(void) {
-	printf("%6.2f           %6.2f\n",
+	printf("%6.2f            %6.2f\n",
 		controllerState_axis[SDL_CONTROLLER_AXIS_TRIGGERLEFT],
 		controllerState_axis[SDL_CONTROLLER_AXIS_TRIGGERRIGHT]
 	);
-	printf("   %c                %c\n",
+	printf("   %c                 %c\n",
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_LEFTSHOULDER) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER) ? '#' : '+'
 	);
-	printf("   %c      %c  %c      %c\n",
+	printf("   %c      %c %c %c      %c\n",
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_DPAD_UP) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_BACK) ? '#' : '+',
+		buttonIsPressed(SDL_CONTROLLER_BUTTON_GUIDE) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_START) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_Y) ? '#' : '+'
 	);
-	printf(" %c   %c            %c   %c\n",
+	printf(" %c   %c             %c   %c\n",
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_DPAD_LEFT) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_X) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_B) ? '#' : '+'
 	);
-	printf("   %c                %c\n",
+	printf("   %c                 %c\n",
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_DPAD_DOWN) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_A) ? '#' : '+'
 	);
-	printf("%6.2f  %c      %c %6.2f\n",
+	printf("%6.2f  %c       %c %6.2f\n",
 		controllerState_axis[SDL_CONTROLLER_AXIS_LEFTX],
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_LEFTSTICK) ? '#' : '+',
 		buttonIsPressed(SDL_CONTROLLER_BUTTON_RIGHTSTICK) ? '#' : '+',
 		controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTX]
 	);
-	printf("%6.2f           %6.2f\n",
+	printf("%6.2f            %6.2f\n",
 		controllerState_axis[SDL_CONTROLLER_AXIS_LEFTY],
 		controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTY]
 	);
-	printf("LS angle:%6.3f  RS angle:%6.3f\n",
+	printf("LS angle:%6.3f   RS angle:%6.3f\n",
 		atan2(controllerState_axis[SDL_CONTROLLER_AXIS_LEFTX], controllerState_axis[SDL_CONTROLLER_AXIS_LEFTY])/M_PI,
 		atan2(controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTX], controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTY])/M_PI
 	);
-	printf("LS mgntd:%6.3f  RS mgntd:%6.3f\n",
+	printf("LS mgntd:%6.3f   RS mgntd:%6.3f\n",
 		hypot(controllerState_axis[SDL_CONTROLLER_AXIS_LEFTX], controllerState_axis[SDL_CONTROLLER_AXIS_LEFTY]),
 		hypot(controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTX], controllerState_axis[SDL_CONTROLLER_AXIS_RIGHTY])
 	);
